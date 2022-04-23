@@ -3,6 +3,7 @@ const { src, dest } = require("gulp");
 //cfg
 
 const path = require("../config/path.js");
+const app = require("../config/app.js");
 
 //plugins
 const fileInclude = require("gulp-file-include");
@@ -15,11 +16,7 @@ const html = () => {
     .pipe(plumber())
     .pipe(fileInclude())
     .pipe(size())
-    .pipe(
-      htmlMin({
-        collapseWhitespace: true,
-      })
-    )
+    .pipe(htmlMin(app.htmlMin))
     .pipe(size({ title: "after" }))
     .pipe(dest(path.html.dest));
 };
