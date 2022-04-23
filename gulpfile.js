@@ -20,7 +20,7 @@ const server = () => {
 //удаление временных файлов и директории
 
 const watcher = () => {
-  watch("./src/pug/**/*.pug", pug);
+  watch("./src/pug/**/*.pug", pug).on("all", browserSync.reload);
 };
 
 exports.pug = pug;
