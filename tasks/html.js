@@ -6,8 +6,10 @@ const htmlMin = require("gulp-htmlmin");
 const size = require("gulp-size");
 const plumber = require("gulp-plumber");
 
+const path = require("./config/path.js");
+
 const html = () => {
-  return src("./src/html/*.html")
+  return src(path.html.src)
     .pipe(plumber())
     .pipe(fileInclude())
     .pipe(size())
@@ -17,7 +19,7 @@ const html = () => {
       })
     )
     .pipe(size({ title: "after" }))
-    .pipe(dest("./public"));
+    .pipe(dest(path.html.dest));
 };
 
 module.exports = html;
