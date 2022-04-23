@@ -1,36 +1,11 @@
-const { src, dest, watch, series, parallel } = require("gulp");
-const del = require("del");
+const { watch, series, parallel } = require("gulp");
+
 const browserSync = require("browser-sync").create();
 
-//plugins
-const fileInclude = require("gulp-file-include");
-const htmlMin = require("gulp-htmlmin");
-const size = require("gulp-size");
-const plumber = require("gulp-plumber");
-const pugs = require("gulp-pug");
+//tasks
 
-const html = () => {
-  return src("./src/html/*.html")
-    .pipe(plumber())
-    .pipe(fileInclude())
-    .pipe(size())
-    .pipe(
-      htmlMin({
-        collapseWhitespace: true,
-      })
-    )
-    .pipe(size({ title: "after" }))
-    .pipe(dest("./public"))
-    .pipe(browserSync.stream());
-};
-
-const pug = () => {
-  return src("./src/pug/*.pug")
-    .pipe(plumber())
-    .pipe(pugs())
-    .pipe(dest("./public"))
-    .pipe(browserSync.stream());
-};
+const clear = require("./tasks/clear.js");
+const pug = require("./tasks/pug.js");
 
 //server
 
@@ -43,9 +18,6 @@ const server = () => {
 };
 
 //удаление временных файлов и директории
-const clear = () => {
-  return del("./public");
-};
 
 const watcher = () => {
   watch("./src/pug/**/*.pug", pug);
