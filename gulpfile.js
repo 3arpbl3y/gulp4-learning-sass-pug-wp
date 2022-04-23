@@ -24,20 +24,13 @@ const html = () => {
     .pipe(browserSync.stream());
 };
 
-// const pug = () => {
-//   return src("./src/pug/*.pug")
-//     .pipe(plumber())
-//     .pipe(pugs())
-//     .pipe(dest("./public"))
-//     .pipe(browserSync.stream());
-// };
-
-// const pug = () => {
-//   return src("./src/pug/*.pug")
-//     .pipe(plumber())
-//     .pipe(pugs())
-//     .pipe(dest("./public"));
-// };
+const pug = () => {
+  return src("./src/pug/*.pug")
+    .pipe(plumber())
+    .pipe(pugs())
+    .pipe(dest("./public"))
+    .pipe(browserSync.stream());
+};
 
 //server
 
@@ -55,10 +48,10 @@ const clear = () => {
 };
 
 const watcher = () => {
-  watch("./src/html/**/*.html", html);
+  watch("./src/pug/**/*.pug", pug);
 };
 
-exports.pug = html;
+exports.pug = pug;
 exports.clear = clear;
 // exports.html = html;
-exports.dev = series(clear, html, parallel(watcher, server));
+exports.dev = series(clear, pug, parallel(watcher, server));
