@@ -1,0 +1,11 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 22px;
+  font-family: Arial;
+}
+
+@import "parts/news.css";
+@import "parts/title.css";

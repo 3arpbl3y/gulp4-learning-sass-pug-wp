@@ -1,0 +1,19 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 22px;
+  font-family: Arial;
+}
+
+.newheader {
+  color: aqua;
+  font-size: 20px;
+}
+
+.header {
+  font-size: 30px;
+  background: orange;
+}
+
