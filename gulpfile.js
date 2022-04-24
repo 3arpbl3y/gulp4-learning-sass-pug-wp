@@ -10,7 +10,7 @@ const path = require("./config/path.js");
 
 const clear = require("./tasks/clear.js");
 const pug = require("./tasks/pug.js");
-const css = require("./tasks/css.js");
+const scss = require("./tasks/scss.js");
 //server
 
 const server = () => {
@@ -25,12 +25,12 @@ const server = () => {
 
 const watcher = () => {
   watch(path.pug.watch, pug).on("all", browserSync.reload);
-  watch(path.css.watch, css).on("all", browserSync.reload);
+  watch(path.scss.watch, scss).on("all", browserSync.reload);
 };
 
 exports.pug = pug;
 exports.clear = clear;
-exports.css = css;
+exports.scss = scss;
 
 //build
-exports.dev = series(clear, parallel(pug, css), parallel(watcher, server));
+exports.dev = series(clear, parallel(pug, scss), parallel(watcher, server));

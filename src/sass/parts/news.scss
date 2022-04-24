@@ -1,0 +1,13 @@
+.newheader {
+  color: aqua;
+  font-size: 20px;
+
+  @include ph {
+ 
+	  color: rgb(247, 250, 156);
+	  background-color: rgb(226, 43, 144);
+ 
+  }
+}
+
+
