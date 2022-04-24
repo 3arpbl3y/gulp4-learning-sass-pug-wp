@@ -7,5 +7,12 @@ body {
   font-family: Arial;
 }
 
+@media (max-width: 700px) {
+  body {
+    color: lightblue;
+    background-color: blueviolet;
+  }
+}
+
 @import "parts/news.css";
 @import "parts/title.css";
